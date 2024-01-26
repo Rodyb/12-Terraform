@@ -20,8 +20,10 @@ pipeline {
     stage("build app") {
       steps {
         script {
-          echo 'building application jar...'
-          scriptFile.buildJar()
+            dir("java-maven-app2") {
+              echo 'building application jar...'
+              sh 'mvn package'
+          }
         }
       }
     }
