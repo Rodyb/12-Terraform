@@ -13,7 +13,7 @@ pipeline {
     maven 'maven'
   }
   environment {
-    IMAGE_NAME = 'nanatwn/demo-app:java-maven-2.0'
+    IMAGE_NAME = 'rodybothe2/mvn:1.1.0-SNAPSHOT-20'
   }
   stages {
     stage("build app") {
