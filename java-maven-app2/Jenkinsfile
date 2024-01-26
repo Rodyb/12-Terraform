@@ -6,6 +6,7 @@
 //   credentialsId: 'gitlab-credentials'
 //   ]
 // )
+def scriptFile = load 'script.groovy'
 
 pipeline {
   agent any
@@ -20,7 +21,7 @@ pipeline {
       steps {
         script {
           echo 'building application jar...'
-          buildJar()
+          scriptFile.buildJar()
         }
       }
     }
@@ -28,9 +29,9 @@ pipeline {
       steps {
         script {
           echo 'building docker image...'
-          buildImage(env.IMAGE_NAME)
-          dockerLogin()
-          dockerPush(env.IMAGE_NAME)
+          scriptFile.buildImage(env.IMAGE_NAME)
+          scriptFile.dockerLogin()
+          scriptFile.dockerPush(env.IMAGE_NAME)
         }
       }
     }
