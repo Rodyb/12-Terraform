@@ -27,16 +27,16 @@ pipeline {
         }
       }
     }
-    stage("build image") {
-      steps {
-        script {
-          echo 'building docker image...'
-          scriptFile.buildImage(env.IMAGE_NAME)
-          scriptFile.dockerLogin()
-          scriptFile.dockerPush(env.IMAGE_NAME)
-        }
-      }
-    }
+//     stage("build image") {
+//       steps {
+//         script {
+//           echo 'building docker image...'
+//           scriptFile.buildImage(env.IMAGE_NAME)
+//           scriptFile.dockerLogin()
+//           scriptFile.dockerPush(env.IMAGE_NAME)
+//         }
+//       }
+//     }
     stage("provison server") {
       environment {
         AWS_ACCESS_KEY_ID = credentials("jenkins_aws_access_key_id")
